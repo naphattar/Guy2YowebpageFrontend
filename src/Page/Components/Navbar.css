@@ -1,0 +1,74 @@
+nav{
+    font-size: 1.05rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0D084E;
+    height: 3.25rem;
+}
+.nav_brand{
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #ee4956;
+}
+.nav_brand:hover{
+    animation-name: guyname;
+    animation-duration: 4s;
+}
+@keyframes guyname {
+    0%  {color: #2115B1;}
+    25%  {color: #392DD2;}
+    50% {color: #5A4FE4;}
+    100%   {color: whitesmoke;}
+}
+
+.nav_list{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 6rem;
+}
+.nav_item{
+    list-style-type: none;
+    display: block;
+    text-align: center;
+}
+.nav_link{
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+.nav_link:hover{
+    color: #ee4956;
+}
+
+.loginlink{
+    color: #0D084E;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.loginbutton {
+    height: 2.4rem;
+    align-items: center;
+    float: right;
+    border-radius: 0.4rem;
+    margin-right: 0.4rem;
+    margin-left: 0.4rem;
+    background-color: #ee4956;
+   
+}
+
+.loginlink{
+    color: whitesmoke;
+}
+
+.loginlink:hover{
+    color: #0D084E;
+}

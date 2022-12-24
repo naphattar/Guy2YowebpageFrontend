@@ -1,0 +1,27 @@
+.popguypagebody{
+    background-color: #050231;
+    height: 43.75rem;
+    display: grid;
+    justify-content: center;
+}
+
+.popguytext{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.83rem;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+}
+
+.popguytext h1{
+    height: fit-content;
+}
+.popguyimagecontainer{
+    height: 35rem;
+    width: 80rem;;
+}
+#popguyimage{
+    height: 33.5rem;
+}

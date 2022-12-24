@@ -1,0 +1,53 @@
+.aboutpagetext{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.aboutpagetext h3{
+    color: #ee4956;
+}
+
+.aboutpagetext p{
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+.aboutpageimage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.aboutpageinfo{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    color: whitesmoke;
+    row-gap: 1rem;
+}
+
+.aboutpageinfo div{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+#guyprofile2{
+    width: 33rem;
+    height: 33rem;
+    border-radius: 100%;
+    border: solid 0.5rem #837DD9;
+}
+
+#guyprofile2:hover {
+    width: 33rem;
+    height: 33rem;
+    border-radius: 100%;
+    border: solid 0.5rem #837DD9;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin {100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
