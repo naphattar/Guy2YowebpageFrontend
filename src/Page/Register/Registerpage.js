@@ -1,30 +1,24 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Registerpage.css"
 import "../Login/Loginpage.css"
 function RegisterPage(){
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
 
-    const handleSubmit =  async(e) =>{
+    const handleSubmit = async(e) =>{
         e.preventDefault();
-        await fetch('http://localhost:3001/register', {
-            method: 'POST',
-            body: JSON.stringify({
-                username: username,
-                password: password,
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((res) => res.json())
-            .catch((err) => {
-                console.log(err.message);
-            });
-        setPassword("");
-        setUsername("");
-            
-    }
+        const uservalues = {
+            username: username,
+            password: password,
+        };
+        console.log(uservalues);
+        try {
+            const response = await axios.post('http://localhost:3001/register', uservalues);
+        } catch (err) {
+            console.error("Error: ", err.message);
+        }
+    };
     return(
         <div>
              <div className="Pagebody">
