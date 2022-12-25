@@ -1,0 +1,20 @@
+.signincontainer{
+    width: 36rem;
+    background-color: rgb(90, 88, 237);
+    border-radius: 4rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.signincontainer h1{
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.signinform a:hover{
+    color: #fb8992;
+}

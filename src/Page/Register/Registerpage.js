@@ -21,6 +21,8 @@ function RegisterPage(){
             .catch((err) => {
                 console.log(err.message);
             });
+        setPassword("");
+        setUsername("");
             
     }
     return(
@@ -40,7 +42,7 @@ function RegisterPage(){
                             placeholder="Password" 
                             onChange = {(event) =>{setPassword(event.target.value)}}></input>
                             <a href='#'>Don't Forget Your Password!</a>
-                            <button onClick={handleSubmit()}>Sign Up</button>
+                            <button onClick={handleSubmit}>Sign Up</button>
                         </form>
                     </div>
                 </div>

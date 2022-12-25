@@ -51,14 +51,15 @@ nav{
 .loginlink{
     color: #0D084E;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .loginbutton {
-    height: 2.4rem;
+    height: 2.6rem;
+    width: 5.6rem;
     align-items: center;
     float: right;
-    border-radius: 0.4rem;
+    border-radius: 0.6rem;
     margin-right: 0.4rem;
     margin-left: 0.4rem;
     background-color: #ee4956;
