@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import AuthService from "../../Services/authservice";
 import "./Navbar.css"
 import { Link, useNavigate } from "react-router-dom";
