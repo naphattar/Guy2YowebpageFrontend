@@ -4,12 +4,35 @@ import "./Loginpage.css"
 import "../Register/Registerpage.css"
 import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
+import AuthService from "../../Services/authservice";
+
 function LoginPage(){
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
     const signIn = useSignIn();
     const navigate = useNavigate();
 
+    const handleSubmit  = async (e) => {
+        e.preventDefault();
+
+          await AuthService.login(username, password).then(
+            () => {
+                console.log("Login completed");
+              navigate("/");
+              window.location.reload();
+            },
+            (error) => {
+              const resMessage =
+                (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+                error.message ||
+                error.toString();
+            }
+          );
+      };
+    
+    /*
     const handleSubmit = async(e) =>{
         e.preventDefault();
         const uservalues = {
@@ -30,37 +53,7 @@ function LoginPage(){
         } catch (err) {
             console.error("Error: ", err.message);
         }
-    };
-    /*
-    const handleSubmit =  async(e) =>{
-        e.preventDefault();
-
-        await fetch('http://localhost:3001/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                username: username,
-                password: password,
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        }).then(
-            (res) => {
-                res.json();
-                signIn({
-                    token: res.formData.token,
-                    expiresIn: 3600,
-                    tokenType: "Bearer",
-                    authState: {username : value.username}
-                })
-            }
-        
-        ).catch((err) => {
-                console.log(err.message);
-            });
-        console.log("fetch complete");
-    }
-    */
+    };*/
 
     return(
         <div>

@@ -8,15 +8,17 @@
 .popguytext{
     display: flex;
     flex-direction: column;
-    font-size: 0.83rem;
-    height: fit-content;
     align-items: center;
     justify-content: center;
     color: whitesmoke;
+    height: 8.7rem;
 }
 
 .popguytext h1{
     height: fit-content;
+    font-size: 2.5rem;
+    margin: 0.4rem;
+    border: none;
 }
 .popguyimagecontainer{
     height: 35rem;

@@ -1,11 +1,25 @@
 import React from "react";
+import { useEffect } from "react";
+import AuthService from "../../Services/authservice";
 import "./Navbar.css"
-import { Link } from "react-router-dom";
-function Loginbutton(){
+import { Link, useNavigate } from "react-router-dom";
+function Loginbutton({islogin}){
+    const navigate = useNavigate();
+    const handleSubmitLogout = () =>{
+        AuthService.logout();
+        navigate("/");
+        window.location.reload(false);
+    }
     return(
-        <button className="loginbutton">
+        (!islogin) ? 
+        (<button className="loginbutton">
             <Link to="/Login" className="loginlink">Log-in</Link>
-        </button>
+        </button>)
+        : 
+        (<button className="loginbutton" onClick={handleSubmitLogout}>
+            <Link to="/" className="loginlink">Log-out</Link>
+        </button>)
+        
     );
 }
 export default Loginbutton;

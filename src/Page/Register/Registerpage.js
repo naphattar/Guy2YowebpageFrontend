@@ -1,11 +1,29 @@
 import React, { useState } from "react";
 import axios from "axios";
+import AuthService from "../../Services/authservice";
 import "./Registerpage.css"
 import "../Login/Loginpage.css"
 function RegisterPage(){
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
 
+    const handleSubmit  = async(e) => {
+        e.preventDefault();
+    
+          await AuthService.register(username, password).then(
+            (error) => {
+              const resMessage =
+                (error.response &&
+                  error.response.data &&
+                  error.response.data.message) ||
+                error.message ||
+                error.toString();
+                console.log(resMessage);
+            }
+          );
+        
+      };
+    /*
     const handleSubmit = async(e) =>{
         e.preventDefault();
         const uservalues = {
@@ -18,7 +36,8 @@ function RegisterPage(){
         } catch (err) {
             console.error("Error: ", err.message);
         }
-    };
+    };*/
+
     return(
         <div>
              <div className="Pagebody">
