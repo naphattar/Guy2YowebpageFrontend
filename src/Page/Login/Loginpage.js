@@ -9,6 +9,7 @@ import AuthService from "../../Services/authservice";
 function LoginPage(){
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
+    const [error,setError] = useState(null);
     const signIn = useSignIn();
     const navigate = useNavigate();
 
@@ -28,10 +29,12 @@ function LoginPage(){
                   error.response.data.message) ||
                 error.message ||
                 error.toString();
+                setError(error.response.data);
             }
           );
       };
-    
+      
+      const errorMessage = error ?  error  : "Don't have an account? ";
     /*
     const handleSubmit = async(e) =>{
         e.preventDefault();
@@ -73,7 +76,7 @@ function LoginPage(){
                             placeholder="Password" 
                             onChange = {(event) =>{setPassword(event.target.value)}}
                             ></input>
-                            <a href='/register'>Don't have an account register here</a>
+                            <a href='/register'> {errorMessage+" register here"}</a>
                             <button onClick={handleSubmit}>Log in </button>
                         </form>
                     </div>

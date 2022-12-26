@@ -3,14 +3,23 @@ import axios from "axios";
 import AuthService from "../../Services/authservice";
 import "./Registerpage.css"
 import "../Login/Loginpage.css"
+import { useNavigate } from "react-router-dom";
 function RegisterPage(){
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
+    const [error,setError] = useState(null);
+    const navigate = useNavigate()
 
     const handleSubmit  = async(e) => {
         e.preventDefault();
-    
-          await AuthService.register(username, password).then(
+
+        await AuthService.register(username, password).then(
+            (response) =>{
+                if(response.status === 201){
+                    navigate('/login');
+                    window.location.reload();
+                }
+            },
             (error) => {
               const resMessage =
                 (error.response &&
@@ -19,10 +28,14 @@ function RegisterPage(){
                 error.message ||
                 error.toString();
                 console.log(resMessage);
+                setError(error.response.data);
             }
           );
+
         
       };
+
+      const errorMessage = error ? error : "Welcome";
     /*
     const handleSubmit = async(e) =>{
         e.preventDefault();
@@ -54,7 +67,7 @@ function RegisterPage(){
                             type="text" 
                             placeholder="Password" 
                             onChange = {(event) =>{setPassword(event.target.value)}}></input>
-                            <a href='#'>Don't Forget Your Password!</a>
+                            <a href='/register'>{errorMessage}</a>
                             <button onClick={handleSubmit}>Sign Up</button>
                         </form>
                     </div>

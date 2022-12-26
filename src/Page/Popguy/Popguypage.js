@@ -10,14 +10,17 @@ import UserService from "../../Services/userservice";
 function Popguypage(){
     const currentUser= AuthService.getCurrentUser();
     const [score ,setScore] = useState(0);
-    const [highscore,setHighscore] = useState(0);
+    const [highscore,setHighscore] = useState(currentUser.highscore);
     const [imageurl,setImageurl] = useState(img1);
 
     useEffect(() => {
-        if(currentUser != null){
-            setHighscore(currentUser.highscore);
-        }
-        console.log(currentUser.highscore);
+        async function fetchData(){
+            if(currentUser != null){
+                const newhighscore = await updateScore(score)
+                setHighscore(newhighscore);
+            }
+        }   
+        fetchData();
     },[]);
 
     const updateScore = async (score)=>{
@@ -26,15 +29,16 @@ function Popguypage(){
         }
         // TODO -- update user score in the data base
         const newUserdata = await UserService.updateUser(currentUser.username,score);
-        const newhighScore = newUserdata.highscore;
-        console.log(currentUser.username,newhighScore);
+        const newhighScore = newUserdata.data.highscore;
         return newhighScore;
     }
 
     const handleMousedown = async (event) =>{
-       await setScore(score+1);
-       const newhighScore = await updateScore(score);
-       await setHighscore(newhighScore);
+        if(score+1 > highscore){
+            const newhighScore = await updateScore(score+1);
+            setHighscore(newhighScore);
+        }
+       setScore(score+1);
        if(score >= 200){
         setImageurl(img4)
        }else if (score >= 100){
@@ -52,8 +56,7 @@ function Popguypage(){
             <div className="popguypagebody">
                 <div className="popguytext">
                     <h1>POP-GUY</h1>
-                    <h1>{score}</h1>
-                    <h1>{highscore}</h1>
+                    <h1>Score:{score} Highscore:{highscore}</h1>
                 </div>
                 <div className="popguyimagecontainer">
                     <img src={imageurl} id="popguyimage" onMouseDown={handleMousedown} onMouseUp={handleMouseup}></img>
