@@ -10,33 +10,45 @@ import UserService from "../../Services/userservice";
 function Popguypage(){
     const currentUser= AuthService.getCurrentUser();
     const [score ,setScore] = useState(0);
-    const [highscore,setHighscore] = useState(currentUser.highscore);
+    const [highscore,setHighscore] = useState(0);
     const [imageurl,setImageurl] = useState(img1);
+
+    // for fetching user data 
+    const updateScore = async (newscore)=>{
+        if(!currentUser){
+            return;
+        }
+        // update user score in the data base
+        const newUserdata = await UserService.updateUserscore(currentUser.username,newscore);
+        return newUserdata.highscore;
+    }
+    const getUpdatedUser = (score) =>{
+        const userData = AuthService.getCurrentUser();
+        userData.highscore = score;
+        return userData;
+    }
 
     useEffect(() => {
         async function fetchData(){
             if(currentUser != null){
-                const newhighscore = await updateScore(score)
-                setHighscore(newhighscore);
+                // set highscore UI
+                const userdata = AuthService.getCurrentUser();
+                setHighscore(userdata.highscore);
+                // send the new highscore to the database
+                await updateScore(userdata.highscore)
             }
         }   
         fetchData();
     },[]);
 
-    const updateScore = async (score)=>{
-        if(!currentUser){
-            return;
-        }
-        // TODO -- update user score in the data base
-        const newUserdata = await UserService.updateUser(currentUser.username,score);
-        const newhighScore = newUserdata.data.highscore;
-        return newhighScore;
-    }
 
-    const handleMousedown = async (event) =>{
+    const handleMousedown = (event) =>{
+        const highscore = AuthService.getCurrentUser().highscore;
         if(score+1 > highscore){
-            const newhighScore = await updateScore(score+1);
-            setHighscore(newhighScore);
+           // const newhighScore = await updateScore(score+1);
+            const updateUserdata = getUpdatedUser(score+1);
+            setHighscore(score+1);
+            localStorage.setItem("user", JSON.stringify(updateUserdata));
         }
        setScore(score+1);
        if(score >= 200){
