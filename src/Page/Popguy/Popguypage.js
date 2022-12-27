@@ -43,12 +43,14 @@ function Popguypage(){
 
 
     const handleMousedown = (event) =>{
-        const highscore = AuthService.getCurrentUser().highscore;
+        const highscore = currentUser ?AuthService.getCurrentUser().highscore : 0;
         if(score+1 > highscore){
            // const newhighScore = await updateScore(score+1);
-            const updateUserdata = getUpdatedUser(score+1);
-            setHighscore(score+1);
-            localStorage.setItem("user", JSON.stringify(updateUserdata));
+           if(currentUser){
+                const updateUserdata = getUpdatedUser(score+1);
+                setHighscore(score+1);
+                localStorage.setItem("user", JSON.stringify(updateUserdata));
+           }
         }
        setScore(score+1);
        if(score >= 200){
