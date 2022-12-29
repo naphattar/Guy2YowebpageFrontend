@@ -24,6 +24,7 @@ function Navbar(){
                 <NavItems tolink="/" name="Home"></NavItems>
                 <NavItems tolink="/about" name="About Guy"></NavItems>
                 <NavItems tolink="/popguy" name="Play Pop guy"></NavItems>
+                <NavItems tolink="/dashboard" name="Leaderboard"></NavItems>
             </ul>
             <Loginbutton islogin ={isLogin}></Loginbutton>
         </nav>

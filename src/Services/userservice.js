@@ -23,13 +23,21 @@ const getPublicContent = () => {
   return axios.get(API_URL + "all");
 };
 
-const getUserBoard = () => {
-  return axios.get(API_URL + "user");
+
+// to get all users data
+const getUsersBoard = () => {
+  return axios.get(API_URL + "users")
+  .then((response) =>{
+    //console.log("test get allusers" , response.data);
+    localStorage.setItem("users", JSON.stringify(response.data));
+    return response.data;
+  });
+
 };
 
 const UserService = {
   getPublicContent,
-  getUserBoard,
+  getUsersBoard,
   updateUserscore,
 }
 

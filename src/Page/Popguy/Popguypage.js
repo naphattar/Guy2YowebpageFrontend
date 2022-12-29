@@ -43,9 +43,9 @@ function Popguypage(){
 
 
     const handleMousedown = (event) =>{
+
         const highscore = currentUser ?AuthService.getCurrentUser().highscore : 0;
         if(score+1 > highscore){
-           // const newhighScore = await updateScore(score+1);
            if(currentUser){
                 const updateUserdata = getUpdatedUser(score+1);
                 setHighscore(score+1);
@@ -70,7 +70,7 @@ function Popguypage(){
             <div className="popguypagebody">
                 <div className="popguytext">
                     <h1>POP-GUY</h1>
-                    <h1>Score:{score} Highscore:{highscore}</h1>
+                    <h1>Score: {score} Highscore: {highscore}</h1>
                 </div>
                 <div className="popguyimagecontainer">
                     <img src={imageurl} id="popguyimage" onMouseDown={handleMousedown} onMouseUp={handleMouseup}></img>

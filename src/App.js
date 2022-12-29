@@ -7,6 +7,7 @@ import Aboutpage from './Page/About/Aboutpage';
 import Popguypage from './Page/Popguy/Popguypage';
 import RegisterPage from './Page/Register/Registerpage';
 import LoginPage from './Page/Login/Loginpage';
+import Dashboard from './Page/Dashboard/Dashboard';
 function App() {
   return (
     <div className="App" >
@@ -16,7 +17,8 @@ function App() {
         <Route exact path="/popguy" element={<Popguypage/>}></Route>
         <Route exact path="/about" element={<Aboutpage/>}></Route>  
         <Route exact path="/login" element={<LoginPage/>}></Route>
-        <Route exact path="/register" element={<RegisterPage/>}></Route>    
+        <Route exact path="/register" element={<RegisterPage/>}></Route> 
+        <Route exact path="dashboard" element={<Dashboard/>}></Route>   
       </Routes>
     </div>
   );
