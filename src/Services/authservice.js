@@ -1,4 +1,5 @@
 import axios from "axios";
+import UserService from "./userservice";
 
 const API_URL = "http://localhost:3001/";
 
@@ -24,10 +25,7 @@ const login = (username, password) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
-  /*return axios.post(API_URL + "signout").then((response) => {
-    return response.data;
-  });*/
+    localStorage.removeItem("user")
 };
 
 const getCurrentUser = () => {

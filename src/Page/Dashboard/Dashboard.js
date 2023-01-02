@@ -6,7 +6,6 @@ import '../Homepage/Homepage.css'
 import './Dashboard.css'
 import Dashboardrow from "./Dashboardrow";
 function Dashboard(){
-    const [loading,setLoading] = useState(false);
     const [users,setUsers] = useState([]);
     const [ranking,setRanking] = useState([]);
 
@@ -42,10 +41,8 @@ function Dashboard(){
     const sortUsers = async () =>{
         try{
             const userlist = await getAllusers();
-            //console.log("users",userlist);
             userlist.sort(compareScore).reverse();
             userlist.map((user,index) => user.rank = index+1);
-            //console.log("sorted userlist",userlist);
             return userlist;
         }catch(err){
             console.log(err);

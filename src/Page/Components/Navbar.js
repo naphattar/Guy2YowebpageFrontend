@@ -26,7 +26,7 @@ function Navbar(){
                 <NavItems tolink="/popguy" name="Play Pop guy"></NavItems>
                 <NavItems tolink="/dashboard" name="Leaderboard"></NavItems>
             </ul>
-            <Loginbutton islogin ={isLogin}></Loginbutton>
+            <Loginbutton islogin ={isLogin} currentUser={currentUser}></Loginbutton>
         </nav>
         
     );
