@@ -17,7 +17,7 @@ function LoginPage(){
         e.preventDefault();
           await AuthService.login(username, password)
           .then((response) => {
-              if(response.status === 200){
+              if(response.status === 201){
                 console.log("Login completed");
                 navigate("/");
                 window.location.reload();
