@@ -15,12 +15,13 @@ function LoginPage(){
 
     const handleSubmit  = async (e) => {
         e.preventDefault();
-
-          await AuthService.login(username, password).then(
-            () => {
+          await AuthService.login(username, password)
+          .then((response) => {
+              if(response.status === 200){
                 console.log("Login completed");
-              navigate("/");
-              window.location.reload();
+                navigate("/");
+                window.location.reload();
+              }
             },
             (error) => {
               const resMessage =
