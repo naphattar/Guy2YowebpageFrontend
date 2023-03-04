@@ -28,7 +28,6 @@ const getPublicContent = () => {
 const getUsersBoard = () => {
   return axios.get(API_URL + "users")
   .then((response) =>{
-    console.log(response);
     localStorage.setItem("users", JSON.stringify(response.data));
     return response.data;
   });
