@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3001/";
+const API_URL = "guy2-yowebpage-backend.vercel.app/";
 
 
 const updateUserscore = (username,newscore) =>{

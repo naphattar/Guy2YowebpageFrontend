@@ -1,7 +1,7 @@
 import axios from "axios";
 import UserService from "./userservice";
 
-const API_URL = "guy2-yowebpage-backend.vercel.app";
+const API_URL = "guy2-yowebpage-backend.vercel.app/";
 
 const register = (username, password) => {
   return axios.post(API_URL + "register", {
