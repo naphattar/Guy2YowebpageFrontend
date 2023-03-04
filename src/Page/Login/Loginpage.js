@@ -25,12 +25,10 @@ function LoginPage(){
             },
             (error) => {
               const resMessage =
-                (error.response &&
-                  error.response.data &&
-                  error.response.data.message) ||
+                ( error.response.data.message) ||
                 error.message ||
                 error.toString();
-                setError(error.response.data);
+                setError(resMessage);
             }
           );
       };
