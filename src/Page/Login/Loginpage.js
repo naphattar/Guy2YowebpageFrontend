@@ -19,8 +19,8 @@ function LoginPage(){
           await AuthService.login(username, password).then(
             () => {
                 console.log("Login completed");
-              navigate("/");
-              window.location.reload();
+              //navigate("/");
+              //window.location.reload();
             },
             (error) => {
               const resMessage =
