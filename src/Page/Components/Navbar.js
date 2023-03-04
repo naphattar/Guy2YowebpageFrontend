@@ -28,7 +28,7 @@ function Navbar(){
             </ul>
             <Loginbutton islogin ={isLogin} currentUser={currentUser}></Loginbutton>
         </nav>
-        
+           
     );
 }
 export default Navbar;

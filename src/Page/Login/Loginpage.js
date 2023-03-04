@@ -35,28 +35,6 @@ function LoginPage(){
       };
       
       const errorMessage = error ?  error  : "Don't have an account? ";
-    /*
-    const handleSubmit = async(e) =>{
-        e.preventDefault();
-        const uservalues = {
-            username: username,
-            password: password,
-        };
-        console.log(uservalues);
-        try {
-            const response = await axios.post('http://localhost:3001/login', uservalues);
-            signIn({
-                token: response.data.token,
-                expiresIn: 3600,
-                tokenType: "Bearer",
-                authState: {username: uservalues.username}
-            })
-            console.log(`Login success welcome ${uservalues.username}`);
-            navigate('/');
-        } catch (err) {
-            console.error("Error: ", err.message);
-        }
-    };*/
 
     return(
         <div>
