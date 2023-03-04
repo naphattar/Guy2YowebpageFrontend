@@ -16,8 +16,8 @@ function LoginPage(){
     const handleSubmit  = async (e) => {
         e.preventDefault();
           await AuthService.login(username, password)
-          .then((response) => {
-              if(response.status === 201){
+          .then(() => {
+              if(localStorage.getItem("user")){
                 console.log("Login completed");
                 navigate("/");
                 window.location.reload();
